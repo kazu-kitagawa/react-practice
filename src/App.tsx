@@ -1,25 +1,31 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import MyButton from "./MyButton";
+
+function Welcome(props: any) {
+  return <h1>Hello, {props.name}</h1>;
+}
 
 function App() {
+  const initialState = Math.floor(Math.random() * 10) + 1;
+  const [count, setCount] = useState(initialState);
+
+  const doubleIncrement = () => setCount(count + 2);
+  const doubleDecrement = () => setCount(count - 2);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Welcome name="Kitagawa" />
+      <p>count = {count} </p>
+      <MyButton display="-" onClickAction={ () => setCount(count - 1)} />
+      <MyButton display="+" onClickAction={ () => setCount(count + 1)} />
+      <MyButton display="alert" onClickAction={ () => alert("debug")} />
+      <div>
+          <MyButton display="++" onClickAction={doubleIncrement} />
+          <MyButton display="--" onClickAction={doubleDecrement} />
+      </div>
+    </>
   );
 }
 
