@@ -1,9 +1,11 @@
-import React, { useState,useEffect } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 import MyButton from "./MyButton";
 
-function Welcome(props: any) {
+type welcomeProps = {
+  name: string;
+}
+function Welcome(props: welcomeProps) {
   return <h1>Hello, {props.name}</h1>;
 }
 
@@ -22,8 +24,8 @@ function App() {
       <MyButton display="+" onClickAction={ () => setCount(count + 1)} />
       <MyButton display="alert" onClickAction={ () => alert("debug")} />
       <div>
-          <MyButton display="++" onClickAction={doubleIncrement} />
-          <MyButton display="--" onClickAction={doubleDecrement} />
+        <MyButton display="--" onClickAction={doubleDecrement} />
+        <MyButton display="++" onClickAction={doubleIncrement} />
       </div>
     </>
   );
